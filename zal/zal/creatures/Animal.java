@@ -2,7 +2,7 @@ package zal.creatures;
 
 import zal.Human;
 import zal.Sellable;
-import zal.Transaction;
+//import zal.Transaction;
 
 public abstract class Animal implements Sellable, Feedable {
     public boolean isAlive = true;

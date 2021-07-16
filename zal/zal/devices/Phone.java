@@ -3,7 +3,7 @@ package zal.devices;
 import zal.Human;
 import zal.Transaction;
 
-import java.net.URL;
+//import java.net.URL;
 import java.util.*;
 
 public class Phone extends Device {
