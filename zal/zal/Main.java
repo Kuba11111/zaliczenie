@@ -1,7 +1,7 @@
 package zal;
 
 //import zal.creatures.Animal;
-import zal.devices.Car;
+import zal.devices.*;
 
 public class Main {
     public static void main(String[] args){
@@ -32,13 +32,18 @@ public class Main {
         robert.setSalary(10);
         robert.setCar(samochod); */
     //zad 6
-        Car poj1 = new Car("a6", "audi", "diesel", 0.0, 1000002.0);
+/*         Car poj1 = new Car("a6", "audi", "diesel", 0.0, 1000002.0);
         Car poj2 = new Car("a6", "audi", "diesel", 0.0, 1000002.0);
 
         if(poj1.equals(poj2)) System.out.println(true);
         else System.out.println(false);
 
         System.out.println(poj1);
-        System.out.println(poj2);
+        System.out.println(poj2); */
+    //zad 7
+        Phone iPS45= new Phone("s45", "Apple", 10000.0);
+        System.out.println(iPS45.isOn);
+        iPS45.turnOn();
+        System.out.println(iPS45.isOn);
     }
 }
