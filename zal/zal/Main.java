@@ -1,7 +1,7 @@
 package zal;
 
 //import zal.creatures.Animal;
-import zal.devices.Car;
+//import zal.devices.Car;
 
 public class Main {
     public static void main(String[] args){
@@ -15,8 +15,12 @@ public class Main {
         kot.takeForAWalk();
         kot.feed(); */
     //zad 2
-        Car auto = new Car("a6", "audi", "diesel", 0.0);
+/*         Car auto = new Car("a6", "audi", "diesel", 0.0);
         Human robert = new Human("Robert","Maklowicz", 100000.0);
-        robert.car = auto;
+        robert.car = auto; */
+    //zad 3 i 4
+        Human robert = new Human("Robert", "Maklowicz Jr.", 100000.0);
+        robert.getSalary();
+        robert.setSalary(100000);
     }
 }
