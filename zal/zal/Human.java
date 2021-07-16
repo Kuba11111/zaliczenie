@@ -6,6 +6,7 @@ import zal.devices.Phone;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.*;
 
 public class Human {
     public String firstName;
@@ -89,10 +90,14 @@ public class Human {
         if(car.value<this.salary) {
             System.out.println("Udalo sie kupic za gotowke");
             garage[parkingPlace] = car;
+            car.transactions.add(new Transaction(null, this, car.value,new Date()));
+
         }
         else if ((car.value/12)<this.salary){
             System.out.println("Udalo sie kupic na kredyt");
             garage[parkingPlace] = car;
+            car.transactions.add(new Transaction(null, this, car.value,new Date()));
+
         }
         else System.out.println("Zapisz sie na studia i znajdz nowa robote albo idz po podwyzke");
     }

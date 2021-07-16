@@ -2,6 +2,7 @@ package zal.creatures;
 
 import zal.Human;
 import zal.Sellable;
+import zal.Transaction;
 
 public abstract class Animal implements Sellable, Feedable {
     public boolean isAlive = true;
@@ -99,7 +100,6 @@ public abstract class Animal implements Sellable, Feedable {
             buyer.pet = seller.pet;
             seller.pet = null;
             System.out.println("Transakcja zostala wykonana");
-
         }
         else System.out.println("Transakcja nie zostala wykonana");
     }

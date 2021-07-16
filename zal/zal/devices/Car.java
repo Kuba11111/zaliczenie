@@ -1,8 +1,10 @@
 package zal.devices;
 
 import zal.Human;
+import zal.Transaction;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public abstract class Car extends Device{
     public String fuelType;
@@ -17,6 +19,24 @@ public abstract class Car extends Device{
         this.mileage = mileage;
         this.value = value;
         this.yearOfProduction = yearOfProduction;
+    }
+
+    public boolean isOwner(Human human){
+        Transaction tr = this.transactions.get(this.transactions.size() - 1);
+        return tr.buyer.equals(human);
+    }
+
+    public boolean didSell(Human seller, Human buyer){
+        Transaction t;
+        for (Transaction transaction : this.transactions) {
+            t = transaction;
+            if ((t.seller == seller) && (t.buyer == buyer)) return true;
+        }
+        return false;
+    }
+
+    public int numberOfTransactions(){
+        return this.transactions.size();
     }
 
     @Override
@@ -68,6 +88,8 @@ public abstract class Car extends Device{
             buyer.cash -= price;
             seller.cash += price;
             System.out.println("Transakcja zostala wykonana");
+            this.transactions.add(new Transaction(seller,buyer,price, new Date()));
+
         }
         else System.out.println("Transakcja nie zostala wykonana");
     }

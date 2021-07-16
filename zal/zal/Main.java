@@ -84,7 +84,7 @@ public class Main {
         tesla.refuel();
         System.out.println(tesla); */
     //zad 11
-        Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
+/*         Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
         Human albert = new Human("Albert","Kowalski",80000.0, 3);
         Human adam = new Human("Adam","Malinowski",8000.0);
         adam.cash = 1000000;
@@ -101,6 +101,27 @@ public class Main {
         System.out.println(Arrays.toString(albert.garage));
         System.out.println(Arrays.toString(adam.garage));
         System.out.println(albert.cash);
-        System.out.println(adam.cash);
+        System.out.println(adam.cash); */
+    //zad 12 + 8
+        Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
+        Human bartek = new Human("Bartek","Kowalski",5000.0, 5);
+        bartek.setHumanCar(tesla, 0);
+        Human adam = new Human("Adam","Malinowski",8000.0, 5);
+        bartek.cash = 50000.0;
+        adam.cash = 100000000.0;
+
+        System.out.println(bartek);
+        System.out.println(adam);
+
+        bartek.getCar(0).sell(bartek,adam,bartek.getCar(0).value);
+
+        System.out.println(bartek);
+        System.out.println(adam);
+        System.out.println(tesla.transactions);
+        System.out.println(tesla.isOwner(adam));
+        System.out.println(tesla.isOwner(bartek));
+        System.out.println(tesla.didSell(bartek,adam));
+        System.out.println(tesla.didSell(adam,bartek));
+        System.out.println(tesla.numberOfTransactions());
     }
 }
