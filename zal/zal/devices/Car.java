@@ -2,16 +2,16 @@ package zal.devices;
 
 import zal.Human;
 
-public class Car extends Device{
+public abstract class Car extends Device{
     public String fuelType;
     public Double mileage;
     public Car car;
     public Double value;
+    double fuel = 0;
 
-    public Car(String model, String producer, String fuelType, Double mileage, Double value, int yearOfProduction){
+    public Car(String model, String producer, Double mileage, Double value, int yearOfProduction){
         this.model = model;
         this.producer = producer;
-        this.fuelType = fuelType;
         this.mileage = mileage;
         this.value = value;
         this.yearOfProduction = yearOfProduction;
@@ -22,6 +22,8 @@ public class Car extends Device{
         isOn = true;
     }
 
+    public abstract void refuel();
+
     @Override
     public String toString() {
         return "Car{" +
@@ -31,6 +33,7 @@ public class Car extends Device{
                 ", producer='" + this.producer + '\'' +
                 ", mileage='" + this.mileage + '\'' +
                 ", value=" + this.value +
+                ", fuel=" + this.fuel +
                 '}';
     }
 

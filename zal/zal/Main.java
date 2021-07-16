@@ -63,13 +63,23 @@ public class Main {
         System.out.println(bartek);
         System.out.println(adam); */
     //zad 9
-        FarmAnimal krowa = new FarmAnimal("cow",15000,1);
+/*         FarmAnimal krowa = new FarmAnimal("cow",15000,1);
         krowa.setWeight(900);
         System.out.println(krowa);
         krowa.feed();
         krowa.feed(250);
         System.out.println(krowa);
         krowa.beEaten();
-        System.out.println(krowa);
+        System.out.println(krowa); */
+    //zad 10
+        Phone iPS45= new Phone("s45", "Apple", 10000.0);
+        System.out.println(iPS45);
+        iPS45.installAnApp("Apka","v.12","https://www.stronka.pl");
+        System.out.println(iPS45);
+
+        Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
+        System.out.println(tesla);
+        tesla.refuel();
+        System.out.println(tesla);
     }
 }

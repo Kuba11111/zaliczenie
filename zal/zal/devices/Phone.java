@@ -2,8 +2,17 @@ package zal.devices;
 
 import zal.Human;
 
+import java.net.URL;
+
 public class Phone extends Device {
     String os;
+    String appName;
+    String appVersion = defaultAppVersion;
+    String appServerAddress = defaultAppServerAddress;
+    String appProtocol = defaultAppProtocol;
+    static final String defaultAppVersion = "1.0";
+    static final String defaultAppServerAddress = "0.0.0.0";
+    static final String defaultAppProtocol = "HTTPS";
 
     public Phone(String model, String producer, double value){
         this.model = model;
@@ -42,5 +51,26 @@ public class Phone extends Device {
             System.out.println("Transakcja zostala wykonana");
         }
         else System.out.println("Transakcja nie zostala wykonana");
+    }
+
+    public void installAnApp(String name){
+        this.appName = name;
+    }
+
+    public void installAnApp(String name, String version){
+        this.appName = name;
+        this.appVersion = version;
+    }
+
+    public void installanApp(URL url){
+        this.appProtocol = url.getProtocol();
+        this.appName = url.getFile();
+        this.appServerAddress = url.getHost();
+    }
+
+    public void installAnApp(String name, String version, String server_address){
+        this.appName = name;
+        this.appVersion = version;
+        this.appServerAddress = server_address;
     }
 }
