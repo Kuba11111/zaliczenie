@@ -2,6 +2,7 @@ package zal;
 
 import zal.creatures.Animal;
 import zal.devices.Car;
+import zal.devices.Phone;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,6 +13,8 @@ public class Human {
     public Animal pet; 
     private Car car;
     public Double salary;
+    public double cash;
+    public Phone phone;
 
     public Human(String firstName, String lastName, Double money){
         this.firstName = firstName;
@@ -37,6 +40,10 @@ public class Human {
 
     public Car getCar(){
         return this.car;
+    }
+
+    public void setHumanCar(Car car){
+        this.car = car;
     }
 
     public void setCar(Car car) {

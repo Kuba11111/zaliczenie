@@ -1,6 +1,8 @@
 package zal.devices;
 
-public abstract class Device {
+import zal.Sellable;
+
+public abstract class Device implements Sellable {
     String model;
     String producer;
     public int yearOfProduction;

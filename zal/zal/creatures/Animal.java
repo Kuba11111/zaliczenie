@@ -1,12 +1,19 @@
 package zal.creatures;
 
-public class Animal {
+import zal.Human;
+import zal.Sellable;
+
+public class Animal implements Sellable {
     public boolean isAlive = true;
     final String species;
     public double weight;
+    public String name;
+    public Double price;
 
-    public Animal(String species){
+    public Animal(String species, String name, Double value){
         this.species = species;
+        this.name = name;
+        this.price = value;
         switch(species){
             case "cat":
                 weight = 4.5;
@@ -55,5 +62,19 @@ public class Animal {
                 ", weight=" + this.weight +
                 ", isAlive=" + this.isAlive +
                 '}';
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, double price) {
+        if (seller.pet.equals(this) && buyer.cash>this.price)
+        {
+            buyer.cash -= this.price;
+            seller.cash += this.price;
+            buyer.pet = seller.pet;
+            seller.pet = null;
+            System.out.println("Transakcja zostala wykonana");
+
+        }
+        else System.out.println("Transakcja nie zostala wykonana");
     }
 }

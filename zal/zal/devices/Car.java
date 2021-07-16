@@ -1,5 +1,6 @@
 package zal.devices;
 
+import zal.Human;
 
 public class Car extends Device{
     public String fuelType;
@@ -31,5 +32,18 @@ public class Car extends Device{
                 ", mileage='" + this.mileage + '\'' +
                 ", value=" + this.value +
                 '}';
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, double price) {
+        if (this.value < buyer.cash)
+        {
+            buyer.cash -= price;
+            seller.cash += price;
+            buyer.setHumanCar(seller.getCar());
+            seller.setHumanCar(null);
+            System.out.println("Transakcja zostala wykonana");
+        }
+        else System.out.println("Transakcja nie zostala wykonana");
     }
 }

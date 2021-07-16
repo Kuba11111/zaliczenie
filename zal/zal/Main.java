@@ -1,6 +1,6 @@
 package zal;
 
-//import zal.creatures.Animal;
+import zal.creatures.Animal;
 import zal.devices.*;
 
 public class Main {
@@ -41,9 +41,24 @@ public class Main {
         System.out.println(poj1);
         System.out.println(poj2); */
     //zad 7
-        Phone iPS45= new Phone("s45", "Apple", 10000.0);
+/*         Phone iPS45= new Phone("s45", "Apple", 10000.0);
         System.out.println(iPS45.isOn);
         iPS45.turnOn();
-        System.out.println(iPS45.isOn);
+        System.out.println(iPS45.isOn); */
+    //zad8
+        Human bartek = new Human("Bartek","Kowalski",5000.0);
+        Human adam = new Human("Adam","Malinowski",8000.0);
+        bartek.cash = 50000;
+        adam.cash = 100000;
+
+
+        bartek.pet = new Animal("cat","Yolololo", 10000.0);
+        System.out.println(bartek);
+        System.out.println(adam);
+
+        bartek.pet.sell(bartek,adam,bartek.pet.price);
+
+        System.out.println(bartek);
+        System.out.println(adam);
     }
 }

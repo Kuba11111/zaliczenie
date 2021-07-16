@@ -1,5 +1,7 @@
 package zal.devices;
 
+import zal.Human;
+
 public class Phone extends Device {
     String os;
 
@@ -27,5 +29,18 @@ public class Phone extends Device {
                 ", value=" + value +
                 ", os='" + os + '\'' +
                 '}';
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, double price) {
+        if (seller.phone.equals(this) && buyer.cash>this.value)
+        {
+            buyer.cash -= this.value;
+            seller.cash += this.value;
+            buyer.phone = seller.phone;
+            seller.phone = null;
+            System.out.println("Transakcja zostala wykonana");
+        }
+        else System.out.println("Transakcja nie zostala wykonana");
     }
 }
