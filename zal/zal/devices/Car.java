@@ -2,6 +2,8 @@ package zal.devices;
 
 import zal.Human;
 
+import java.util.Arrays;
+
 public abstract class Car extends Device{
     public String fuelType;
     public Double mileage;
@@ -39,12 +41,32 @@ public abstract class Car extends Device{
 
     @Override
     public void sell(Human seller, Human buyer, double price) {
-        if (this.value < buyer.cash)
+        boolean exist = Arrays.asList(seller.garage).contains(this);
+        boolean emptySpace = false;
+        for (Car parkingPlace : buyer.garage) {
+            if (parkingPlace == null) {
+                emptySpace = true;
+                break;
+            }
+        }
+
+        if (exist && emptySpace && this.value < buyer.cash)
         {
+            for (int i=0;i< seller.garage.length;i++){
+                if (seller.garage[i].equals(this)){
+                    seller.garage[i] = null;
+                    break;
+                }
+            }
+            for (int i=0;i<buyer.garage.length;i++)
+            {
+                if(buyer.garage[i] == null){
+                    buyer.garage[i] = this;
+                    break;
+                }
+            }
             buyer.cash -= price;
             seller.cash += price;
-            buyer.setHumanCar(seller.getCar());
-            seller.setHumanCar(null);
             System.out.println("Transakcja zostala wykonana");
         }
         else System.out.println("Transakcja nie zostala wykonana");

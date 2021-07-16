@@ -11,15 +11,24 @@ public class Human {
     public String firstName;
     public String lastName;
     public Animal pet; 
-    private Car car;
+    public Car[] garage;
     public Double salary;
     public double cash;
     public Phone phone;
+    private static final int defaultGarageSize = 2;
 
-    public Human(String firstName, String lastName, Double money){
+    Human(String firstName, String lastName, Double money){
         this.firstName = firstName;
         this.lastName = lastName;
         this.salary = money;
+        garage = new Car[defaultGarageSize];
+    }
+
+    Human(String firstName, String lastName, Double money, int sizeOfGarage){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = money;
+        garage = new Car[sizeOfGarage];
     }
 
     public double getSalary() {
@@ -38,22 +47,52 @@ public class Human {
         else System.out.println("Wyplata nie moze byc ujemna");
     }
 
-    public Car getCar(){
-        return this.car;
+    public Car getCar(int parkingPlace){
+        return garage[parkingPlace];
     }
 
-    public void setHumanCar(Car car){
-        this.car = car;
+    public void setHumanCar(Car car, int parkingPlace){
+        garage[parkingPlace] = car;
     }
 
-    public void setCar(Car car) {
+    public double garagePrice(){
+        double sumOfPrices = 0;
+
+        for (Car car:garage) {
+            if(car != null) sumOfPrices += car.value;
+
+        }
+        return sumOfPrices;
+    }
+
+    public void garageSort(){
+        for (int i=0;i<this.garage.length-1;i++) {
+            Car helper;
+            for (int j = 0;j<this.garage.length-(i+1);j++){
+                if(this.garage[j]==null)
+                {
+                    this.garage[j] = this.garage[this.garage.length-(i+1)];
+                    this.garage[this.garage.length-(i+1)] = null;
+                }
+                else if (this.garage[j+1]==null);
+                else if(this.garage[j].yearOfProduction > this.garage[j+1].yearOfProduction)
+                {
+                    helper = this.garage[j];
+                    this.garage[j] = this.garage[j+1];
+                    this.garage[j+1] = helper;
+                }
+            }
+        }
+    }
+
+    public void setCar(Car car, int parkingPlace) {
         if(car.value<this.salary) {
             System.out.println("Udalo sie kupic za gotowke");
-            this.car = car;
+            garage[parkingPlace] = car;
         }
         else if ((car.value/12)<this.salary){
             System.out.println("Udalo sie kupic na kredyt");
-            this.car = car;
+            garage[parkingPlace] = car;
         }
         else System.out.println("Zapisz sie na studia i znajdz nowa robote albo idz po podwyzke");
     }

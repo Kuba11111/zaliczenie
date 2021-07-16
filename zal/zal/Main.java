@@ -5,6 +5,8 @@ import zal.creatures.FarmAnimal;
 import zal.creatures.Pet;
 import zal.devices.*;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args){
     //zad 1
@@ -72,7 +74,7 @@ public class Main {
         krowa.beEaten();
         System.out.println(krowa); */
     //zad 10
-        Phone iPS45= new Phone("s45", "Apple", 10000.0);
+/*         Phone iPS45= new Phone("s45", "Apple", 10000.0);
         System.out.println(iPS45);
         iPS45.installAnApp("Apka","v.12","https://www.stronka.pl");
         System.out.println(iPS45);
@@ -80,6 +82,25 @@ public class Main {
         Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
         System.out.println(tesla);
         tesla.refuel();
-        System.out.println(tesla);
+        System.out.println(tesla); */
+    //zad 11
+        Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
+        Human albert = new Human("Albert","Kowalski",80000.0, 3);
+        Human adam = new Human("Adam","Malinowski",8000.0);
+        adam.cash = 1000000;
+        albert.cash = 100;
+        System.out.println(albert);
+        albert.setCar(tesla,2);
+        albert.setCar(new LPG("G63",    "Mercedes-AMG", 0.0, 255123, 2019),1);
+        System.out.println(albert.garagePrice());
+        System.out.println(Arrays.toString(albert.garage));
+        albert.garageSort();
+        System.out.println(Arrays.toString(albert.garage));
+        System.out.println(Arrays.toString(adam.garage));
+        albert.garage[0].sell(albert,adam,700000);
+        System.out.println(Arrays.toString(albert.garage));
+        System.out.println(Arrays.toString(adam.garage));
+        System.out.println(albert.cash);
+        System.out.println(adam.cash);
     }
 }
