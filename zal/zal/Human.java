@@ -56,6 +56,15 @@ public class Human {
         garage[parkingPlace] = car;
     }
 
+    public void setPhone(Phone phone) {
+        if(phone.value<salary) {
+            System.out.println("Udalo sie kupic za gotowke");
+            this.phone = phone;
+            phone.transactions.add(new Transaction(null, this, phone.value,new Date()));
+        }
+        else System.out.println("Zapisz sie na studia i znajdz nowa robote albo idz po podwyzke");
+    }
+
     public double garagePrice(){
         double sumOfPrices = 0;
 

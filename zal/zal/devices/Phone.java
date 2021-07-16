@@ -1,8 +1,10 @@
 package zal.devices;
 
 import zal.Human;
+import zal.Transaction;
 
 import java.net.URL;
+import java.util.*;
 
 public class Phone extends Device {
     String os;
@@ -13,6 +15,8 @@ public class Phone extends Device {
     static final String defaultAppVersion = "1.0";
     static final String defaultAppServerAddress = "0.0.0.0";
     static final String defaultAppProtocol = "HTTPS";
+
+    Set<Application> apps = new HashSet<>();
 
     public Phone(String model, String producer, double value){
         this.model = model;
@@ -53,24 +57,95 @@ public class Phone extends Device {
         else System.out.println("Transakcja nie zostala wykonana");
     }
 
-    public void installAnApp(String name){
-        this.appName = name;
+    public void installAnApp(Application app){
+
+        try{
+            Transaction tr = this.transactions.get(this.transactions.size()-1);
+
+            if(tr.buyer.cash>app.price)
+            {
+                this.apps.add(app);
+                tr.buyer.cash -= app.price;
+                System.out.println("Transakcja zostala wykonana");
+            }
+            else System.out.println("Transakcja nie zostala wykonana");
+
+        } catch (Exception ex){
+            System.out.println("Telefon nie posiada wlasciciela");
+        }
     }
 
-    public void installAnApp(String name, String version){
-        this.appName = name;
-        this.appVersion = version;
+    public boolean isInstalled(Application application)
+    {
+        return this.apps.contains(application);
     }
 
-    public void installanApp(URL url){
-        this.appProtocol = url.getProtocol();
-        this.appName = url.getFile();
-        this.appServerAddress = url.getHost();
+    public boolean isInstalled(String name)
+    {
+        for(Application app : this.apps){
+            if(app.name.equals(name)) return true;
+        }
+        return false;
     }
 
-    public void installAnApp(String name, String version, String server_address){
-        this.appName = name;
-        this.appVersion = version;
-        this.appServerAddress = server_address;
+    public void freeApps(){
+        for(Application app : this.apps){
+            if(app.price == 0) System.out.println(app);
+        }
+    }
+
+    public double sumOfAppssValues(){
+        double sum = 0;
+        for(Application app : this.apps){
+            sum += app.price;
+        }
+        return sum;
+    }
+
+    public void sortAppsByName()
+    {
+        ArrayList<Application> sortedApps = new ArrayList<Application>(apps);
+
+        System.out.println(this.apps);
+        Application helper;
+        for(int i=0;i<sortedApps.size()-1;i++)
+        {
+            for (int j=0;j<sortedApps.size()-(i+1);j++)
+            {
+                if ((sortedApps.get(j).name).compareTo(sortedApps.get(j+1).name)>0){
+                   helper = sortedApps.get(j);
+                    sortedApps.set(j, sortedApps.get(j+1));
+                    sortedApps.set(j+1,helper);
+                }
+            }
+
+        }
+        for (Application app:sortedApps
+             ) {
+            System.out.println(app.name);
+        }
+    }
+    public void sortAppsByPrice()
+    {
+        ArrayList<Application> sortedApps = new ArrayList<Application>(apps);
+
+        System.out.println(this.apps);
+        Application helper;
+        for(int i=0;i<sortedApps.size()-1;i++)
+        {
+            for (int j=0;j<sortedApps.size()-(i+1);j++)
+            {
+                if ((sortedApps.get(j).price)>(sortedApps.get(j+1).price)){
+                    helper = sortedApps.get(j);
+                    sortedApps.set(j, sortedApps.get(j+1));
+                    sortedApps.set(j+1,helper);
+                }
+            }
+
+        }
+        for (Application app:sortedApps
+        ) {
+            System.out.println(app.name);
+        }
     }
 }

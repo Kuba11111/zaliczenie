@@ -103,7 +103,7 @@ public class Main {
         System.out.println(albert.cash);
         System.out.println(adam.cash); */
     //zad 12 + 8
-        Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
+/*         Electric tesla = new Electric("Model X", "Tesla", 0.0, 650000, 2019);
         Human bartek = new Human("Bartek","Kowalski",5000.0, 5);
         bartek.setHumanCar(tesla, 0);
         Human adam = new Human("Adam","Malinowski",8000.0, 5);
@@ -122,6 +122,32 @@ public class Main {
         System.out.println(tesla.isOwner(bartek));
         System.out.println(tesla.didSell(bartek,adam));
         System.out.println(tesla.didSell(adam,bartek));
-        System.out.println(tesla.numberOfTransactions());
+        System.out.println(tesla.numberOfTransactions()); */
+    //zad 13
+        Human bartek = new Human("Bartek","Kowalski",50000000.0, 5);
+        Phone iPS45= new Phone("s45", "Apple", 10000.0);
+        iPS45.installAnApp(new Application("Test","1.0",2000));
+        bartek.setPhone(iPS45);
+        iPS45.installAnApp(new Application("Test","1.0",2000));
+        bartek.cash+=7000;
+        System.out.println(bartek);
+        iPS45.installAnApp(new Application("Test","1.0",200));
+        Application apka = new Application("ATetris","5.2",500);
+        Application apka1 = new Application("Bobo","2.2",0);
+        Application apka2 = new Application("Monsterek","6.1",250);
+        System.out.println(bartek);
+
+        System.out.println(iPS45.isInstalled(apka));
+        System.out.println(iPS45.isInstalled("Test"));
+        iPS45.installAnApp(apka);
+        iPS45.installAnApp(apka1);
+        iPS45.installAnApp(apka2);
+        System.out.println(iPS45.isInstalled(apka));
+
+        iPS45.freeApps();
+
+        System.out.println(iPS45.sumOfAppssValues());
+        iPS45.sortAppsByName();
+        iPS45.sortAppsByPrice();
     }
 }
