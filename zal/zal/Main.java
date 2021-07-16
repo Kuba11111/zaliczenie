@@ -1,6 +1,8 @@
 package zal;
 
 import zal.creatures.Animal;
+import zal.creatures.FarmAnimal;
+import zal.creatures.Pet;
 import zal.devices.*;
 
 public class Main {
@@ -46,7 +48,7 @@ public class Main {
         iPS45.turnOn();
         System.out.println(iPS45.isOn); */
     //zad8
-        Human bartek = new Human("Bartek","Kowalski",5000.0);
+/*         Human bartek = new Human("Bartek","Kowalski",5000.0);
         Human adam = new Human("Adam","Malinowski",8000.0);
         bartek.cash = 50000;
         adam.cash = 100000;
@@ -59,6 +61,15 @@ public class Main {
         bartek.pet.sell(bartek,adam,bartek.pet.price);
 
         System.out.println(bartek);
-        System.out.println(adam);
+        System.out.println(adam); */
+    //zad 9
+        FarmAnimal krowa = new FarmAnimal("cow",15000,1);
+        krowa.setWeight(900);
+        System.out.println(krowa);
+        krowa.feed();
+        krowa.feed(250);
+        System.out.println(krowa);
+        krowa.beEaten();
+        System.out.println(krowa);
     }
 }

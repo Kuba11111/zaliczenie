@@ -3,9 +3,9 @@ package zal.creatures;
 import zal.Human;
 import zal.Sellable;
 
-public class Animal implements Sellable {
+public abstract class Animal implements Sellable, Feedable {
     public boolean isAlive = true;
-    final String species;
+    public String species;
     public double weight;
     public String name;
     public Double price;
@@ -16,22 +16,48 @@ public class Animal implements Sellable {
         this.price = value;
         switch(species){
             case "cat":
-                weight = 4.5;
+                this.weight = 4.5;
                 break;
             case "dog":
-                weight= 20;
+                this.weight= 20;
                 break;
             case "rabbit":
-                weight= 1.2;
+                this.weight= 1.2;
                 break;
             case "horse":
-                weight= 600;
+                this.weight= 600;
                 break;
             default:
-                weight= 50;
+                this.weight= 50;
                 break;
         }
     }
+
+    public Animal(String species, Double value){
+        this.species = species;
+        this.price = value;
+        switch(species){
+            case "cat":
+                this.weight = 4.5;
+                break;
+            case "dog":
+                this.weight= 20;
+                break;
+            case "rabbit":
+                this.weight= 1.2;
+                break;
+            case "horse":
+                this.weight= 600;
+                break;
+            default:
+                this.weight= 50;
+                break;
+        }
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    } 
 
     public void feed(){
         if (isAlive) this.weight+=3;
