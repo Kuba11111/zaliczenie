@@ -50,4 +50,14 @@ public class Human {
         }
         else System.out.println("Zapisz sie na studia i znajdz nowa robote albo idz po podwyzke");
     }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "firstName='" + this.firstName + '\'' +
+                ", lastName='" + this.lastName + '\'' +
+                ", pet=" + pet +
+                ", salary=" + salary +
+                '}';
+    }
 }

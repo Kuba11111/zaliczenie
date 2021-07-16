@@ -15,4 +15,16 @@ public class Car{
         this.mileage = mileage;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "value=" + this.value +
+                ", fuelType=" + this.fuelType +
+                ", model='" + this.model + '\'' +
+                ", producer='" + this.producer + '\'' +
+                ", mileage='" + this.mileage + '\'' +
+                ", value=" + this.value +
+                '}';
+    }
 }

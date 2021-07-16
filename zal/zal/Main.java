@@ -23,13 +23,22 @@ public class Main {
         robert.getSalary();
         robert.setSalary(100000); */
     //zad 5
-        Car samochod = new Car("a6", "audi", "diesel", 0.0, 1000002.0);
+/*         Car samochod = new Car("a6", "audi", "diesel", 0.0, 1000002.0);
         Human robert = new Human("Robert", "Maklowicz Jr.", 100000.0);
         robert.getCar();
         robert.setCar(samochod);
         robert.setSalary(1000000);
         robert.setCar(samochod);
         robert.setSalary(10);
-        robert.setCar(samochod);
+        robert.setCar(samochod); */
+    //zad 6
+        Car poj1 = new Car("a6", "audi", "diesel", 0.0, 1000002.0);
+        Car poj2 = new Car("a6", "audi", "diesel", 0.0, 1000002.0);
+
+        if(poj1.equals(poj2)) System.out.println(true);
+        else System.out.println(false);
+
+        System.out.println(poj1);
+        System.out.println(poj2);
     }
 }

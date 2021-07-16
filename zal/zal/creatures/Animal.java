@@ -47,4 +47,13 @@ public class Animal {
         }
         else System.out.println("Powodzenia z wyprowadzeniem martwego zwierzecia");
     }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "species='" + this.species + '\'' +
+                ", weight=" + this.weight +
+                ", isAlive=" + this.isAlive +
+                '}';
+    }
 }
